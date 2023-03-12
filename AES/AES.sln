@@ -5,6 +5,8 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AES", "AES.csproj", "{DADCF0B5-7FD8-45FD-ACA6-464E3800D30F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAEStests", "..\MyAEStests\MyAEStests.csproj", "{C55884EF-37BC-44D0-98C1-91F9ABB9F6DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{DADCF0B5-7FD8-45FD-ACA6-464E3800D30F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DADCF0B5-7FD8-45FD-ACA6-464E3800D30F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DADCF0B5-7FD8-45FD-ACA6-464E3800D30F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C55884EF-37BC-44D0-98C1-91F9ABB9F6DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C55884EF-37BC-44D0-98C1-91F9ABB9F6DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C55884EF-37BC-44D0-98C1-91F9ABB9F6DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C55884EF-37BC-44D0-98C1-91F9ABB9F6DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
