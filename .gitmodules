@@ -1,0 +1,3 @@
+[submodule "FiniteFields"]
+	path = FiniteFields
+	url = https://github.com/Michael-Kolesnikov/FiniteFields
