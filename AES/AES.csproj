@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\FiniteFields\FF\FF.csproj" />
     <ProjectReference Include="..\MyAEStests\MyAEStests.csproj" />
   </ItemGroup>
 

@@ -1,4 +1,7 @@
-﻿namespace AES
+﻿using System;
+using System.Text;
+
+namespace AES
 {
     internal class Program
     {
