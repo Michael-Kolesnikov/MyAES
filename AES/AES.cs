@@ -20,10 +20,10 @@ namespace AES
             if (key.Length != 256) throw new ArgumentException();
             _key = key;
         }
-        public string Encode(byte[] msg)
+        public byte[] Encode(byte[] msg)
         {
             if(msg.Length % _fragmentationSize != 0) throw new ArgumentException();
-            var result = "";
+            var result = new List<byte>();
             for(var i = 0; i < msg.Length; i+= _fragmentationSize)
             {
                 byte[,] msgBlock = CreateMsgBlock(i,msg);
@@ -36,9 +36,10 @@ namespace AES
                     msgBlock = ShiftColomns(msgBlock);
                 }
                 byte[] msg2 = msgBlock.Cast<byte>().ToArray();
-                result += Encoding.Default.GetString(msg2, 0, msg2.Length);
+                //result += Encoding.Default.GetString(msg2, 0, msg2.Length);
+                result.AddRange(msg2);
             }
-            return result;
+            return result.ToArray();
         }
         private byte[,] CreateMsgBlock(int startIndex, byte[] msg)
         {
@@ -105,7 +106,22 @@ namespace AES
         public byte[] Decode(byte[] msg)
         {
             if (msg.Length % 16 != 0) throw new ArgumentException();
-            return null;
+            var result = new List<byte>();
+            for (var i = 0; i < msg.Length; i += _fragmentationSize)
+            {
+                byte[,] msgBlock = CreateMsgBlock(i, msg);
+                byte[,] keyBlock = CreateKeyBlock(i);
+                for (var j = 0; j < _convertingNumber; j++)
+                {
+                    msgBlock = ShiftColomns(msgBlock);
+                    msgBlock = ShiftRows(msgBlock);
+                    msgBlock = GetXOR(msgBlock, keyBlock);
+                    msgBlock = GetInverse(msgBlock);
+                }
+                byte[] msg2 = msgBlock.Cast<byte>().ToArray();
+                result.AddRange(msg2);
+            }
+            return result.ToArray();
         }
     }
 }
