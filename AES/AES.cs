@@ -35,7 +35,7 @@ namespace MyAES
                     msgBlock = GetInverse(msgBlock);
                     msgBlock = GetXOR(msgBlock, keyBlock);
                     msgBlock = ShiftRows(msgBlock);
-                    msgBlock = ShiftColomns(msgBlock);
+                    msgBlock = ShiftColumns(msgBlock);
                 }
                 byte[] msg2 = msgBlock.Cast<byte>().ToArray();
                 result.AddRange(msg2);
@@ -97,7 +97,7 @@ namespace MyAES
             return tempArray;
         }
 
-        private static byte[,] ShiftColomns(byte[,] msgBlock)
+        private static byte[,] ShiftColumns(byte[,] msgBlock)
         {
             byte[,] tempArray = new byte[msgBlock.GetLength(0), msgBlock.GetLength(0)];
             for (int i = 0; i < tempArray.GetLength(0); i++)
@@ -122,7 +122,7 @@ namespace MyAES
                 {
                     byte[,] keyBlock = CreateKeyBlock(240 - j * 16);
 
-                    msgBlock = ShiftColomns(msgBlock);
+                    msgBlock = ShiftColumns(msgBlock);
                     msgBlock = ShiftRows(msgBlock);
                     msgBlock = GetXOR(msgBlock, keyBlock);
                     msgBlock = GetInverse(msgBlock);
