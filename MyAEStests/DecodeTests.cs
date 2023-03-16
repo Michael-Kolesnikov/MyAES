@@ -2,7 +2,7 @@
 
 namespace MyAEStests
 {
-    public class EncodeTests
+    public class DecodeTests
     {
         private byte[] _key = new byte[]
         {
@@ -28,9 +28,10 @@ namespace MyAEStests
         public void EncodeByteArray()
         {
             var aes = new AES(_key);
-            var array = new byte[] { 3, 0, 5, 12, 53, 67, 98, 87, 1, 12, 1, 2, 53, 41, 87, 0 };
-            var encodingArray = aes.Encode(array);
-            var expected = new byte[] { 233, 0, 213, 76, 254, 138, 153, 150, 98, 178, 92, 61, 81, 85, 210, 0 };
+
+            var array = new byte[] { 233, 0, 213, 76, 254, 138, 153, 150, 98, 178, 92, 61, 81, 85, 210, 0 };
+            var encodingArray = aes.Decode(array);
+            var expected = new byte[] { 3, 0, 5, 12, 53, 67, 98, 87, 1, 12, 1, 2, 53, 41, 87, 0 };
             Assert.That(encodingArray, Is.EqualTo(expected));
         }
     }
