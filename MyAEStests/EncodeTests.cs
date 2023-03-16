@@ -28,9 +28,9 @@ namespace MyAEStests
         public void EncodeByteArray()
         {
             var aes = new AES(_key);
-            var array = new byte[] { 3, 0, 5, 12, 53, 67, 98, 87, 1, 12, 1, 2, 53, 41, 87, 0 };
+            var array = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 17, 12, 13, 14, 15, 16 };
             var encodingArray = aes.Encode(array);
-            var expected = new byte[] { 233, 0, 213, 76, 254, 138, 153, 150, 98, 178, 92, 61, 81, 85, 210, 0 };
+            var expected = new byte[] { 23, 74, 147, 242, 126, 159, 180, 137, 48, 56, 48, 163, 182, 149, 175, 57 };
             Assert.That(encodingArray, Is.EqualTo(expected));
         }
     }

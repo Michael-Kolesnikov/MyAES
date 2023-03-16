@@ -28,10 +28,10 @@ namespace MyAES
             for (var i = 0; i < msg.Length; i += _fragmentationSize)
             {
                 byte[,] msgBlock = CreateMsgBlock(i, msg);
-                byte[,] keyBlock = CreateKeyBlock(i);
                 for (var j = 0; j < _convertingNumber; j++)
                 {
                     //each byte is converted to an element of the final field, then its reverse is taken
+                    byte[,] keyBlock = CreateKeyBlock(j * 16);
                     msgBlock = GetInverse(msgBlock);
                     msgBlock = GetXOR(msgBlock, keyBlock);
                     msgBlock = ShiftRows(msgBlock);
@@ -118,9 +118,10 @@ namespace MyAES
             for (var i = 0; i < msg.Length; i += _fragmentationSize)
             {
                 byte[,] msgBlock = CreateMsgBlock(i, msg);
-                byte[,] keyBlock = CreateKeyBlock(i);
                 for (var j = 0; j < _convertingNumber; j++)
                 {
+                    byte[,] keyBlock = CreateKeyBlock(240 - j * 16);
+
                     msgBlock = ShiftColomns(msgBlock);
                     msgBlock = ShiftRows(msgBlock);
                     msgBlock = GetXOR(msgBlock, keyBlock);
