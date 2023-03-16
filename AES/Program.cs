@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text;
-
-namespace MyAES
+﻿namespace MyAES
 {
     internal class Program
     {
