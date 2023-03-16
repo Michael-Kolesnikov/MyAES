@@ -5,7 +5,7 @@ namespace MyAEStests
 {
     public class CreateBlocksTests
     {
-        byte[] key = new byte[]
+        private byte[] _key = new byte[]
         {
                 116, 249, 36, 5, 201, 243, 254, 74, 91, 59, 160, 208, 35, 75, 51, 209,
                 245, 197, 110, 94, 44, 252, 165, 253, 213, 12, 27, 173, 77, 230, 112, 36,
@@ -27,7 +27,7 @@ namespace MyAEStests
         [Test]
         public void CreateRandomMsgBlock()
         {
-            AES testedClass = new AES(key);
+            AES testedClass = new AES(_key);
             var msg = new byte[] { 16, 61, 16, 7, 8, 45, 2, 7, 23, 11, 1, 51, 21, 65, 99, 12} ;
             MethodInfo methodInfo = typeof(AES).GetMethod("CreateMsgBlock",
                 BindingFlags.NonPublic | BindingFlags.Instance);
@@ -39,7 +39,7 @@ namespace MyAEStests
         [Test]
         public void CreateKeyBlockWithIndexGreaterKeySize()
         {
-            AES testedClass = new AES(key);
+            AES testedClass = new AES(_key);
             var msg = new byte[] { 16, 61, 16, 7, 8, 45, 2, 7, 23, 11, 1, 51, 21, 65, 99, 12 };
             MethodInfo methodInfo = typeof(AES).GetMethod("CreateKeyBlock",
                 BindingFlags.NonPublic | BindingFlags.Instance);
@@ -52,7 +52,7 @@ namespace MyAEStests
         [Test]
         public void CreateKeyBlockWithIndexInKeySize()
         {
-            AES testedClass = new AES(key);
+            AES testedClass = new AES(_key);
             var msg = new byte[] { 16, 61, 16, 7, 8, 45, 2, 7, 23, 11, 1, 51, 21, 65, 99, 12 };
             MethodInfo methodInfo = typeof(AES).GetMethod("CreateKeyBlock",
                 BindingFlags.NonPublic | BindingFlags.Instance);
