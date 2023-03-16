@@ -9,5 +9,5 @@
   byte[] encoding = aes.Encode(msg);
   
   var msg2 = new byte[64]{...};
-  byte[] decding = aes.Decode(msg2);
+  byte[] decoding = aes.Decode(msg2);
 ```
