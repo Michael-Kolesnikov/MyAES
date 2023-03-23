@@ -18,7 +18,8 @@ namespace MyAES
                 throw new ArgumentException("key size does not match the given parameters");
             }
 
-            this.key = key;
+            this.key = new byte[key.Length];
+            Array.Copy(key, this.key, this.key.Length);
         }
 
         public byte[] Encode(byte[] msg)
