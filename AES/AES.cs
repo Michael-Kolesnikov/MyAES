@@ -77,8 +77,7 @@ namespace MyAES
         {
             for (var i = 0; i < msgBlock.GetLength(0); i++)
                 for (var j = 0; j < msgBlock.GetLength(1); j++)
-                    if (msgBlock[i, j] != 0)
-                        msgBlock[i, j] = (byte)(msgBlock[i, j] ^ keyBlock[i, j]);
+                    msgBlock[i, j] = (byte)(msgBlock[i, j] ^ keyBlock[i, j]);
             return msgBlock;
         }
 
