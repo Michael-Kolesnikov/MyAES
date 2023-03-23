@@ -28,10 +28,10 @@ namespace MyAEStests
         public void CreateRandomMsgBlock()
         {
             AES testedClass = new AES(_key);
-            var msg = new byte[] { 16, 61, 16, 7, 8, 45, 2, 7, 23, 11, 1, 51, 21, 65, 99, 12} ;
+            var msg = new byte[] { 16, 61, 16, 7, 8, 45, 2, 7, 23, 11, 1, 51, 21, 65, 99, 12 };
             MethodInfo methodInfo = typeof(AES).GetMethod("CreateMsgBlock",
                 BindingFlags.NonPublic | BindingFlags.Instance);
-            var expectedArray = new byte[,] { {16, 61, 16, 7},{8, 45, 2, 7 },{23, 11, 1, 51 },{21, 65, 99, 12 } };
+            var expectedArray = new byte[,] { { 16, 61, 16, 7 }, { 8, 45, 2, 7 }, { 23, 11, 1, 51 }, { 21, 65, 99, 12 } };
             var startIndex = 0;
             var recievedArray = methodInfo.Invoke(testedClass, new object[] { startIndex, msg });
             Assert.That(recievedArray, Is.EqualTo(expectedArray));
@@ -45,8 +45,8 @@ namespace MyAEStests
                 BindingFlags.NonPublic | BindingFlags.Instance);
             // must be divisible by fragmentationSize;
             var startIndex = 272;
-            var block = methodInfo.Invoke(testedClass,new object[] {startIndex});
-            var expectedBlock = new byte[,] { {245, 197, 110, 94 },{44, 252, 165, 253 },{213, 12, 27, 173 },{77, 230, 112, 36 } };
+            var block = methodInfo.Invoke(testedClass, new object[] { startIndex });
+            var expectedBlock = new byte[,] { { 245, 197, 110, 94 }, { 44, 252, 165, 253 }, { 213, 12, 27, 173 }, { 77, 230, 112, 36 } };
             Assert.That(block, Is.EqualTo(expectedBlock));
         }
         [Test]
