@@ -36,7 +36,7 @@ namespace MyAES
                 for (var j = 0; j < this.convertingNumber; j++)
                 {
                     // each byte is converted to an element of the final field, then its reverse is taken
-                    byte[,] keyBlock = CreateKeyBlock(j * 16);
+                    byte[,] keyBlock = CreateKeyBlock(j * this.fragmentationSize);
                     msgBlock = GetInverse(msgBlock);
                     msgBlock = GetXOR(msgBlock, keyBlock);
                     msgBlock = ShiftRows(msgBlock);
@@ -52,7 +52,7 @@ namespace MyAES
 
         public byte[] Decode(byte[] msg)
         {
-            if (msg.Length % 16 != 0)
+            if (msg.Length % this.fragmentationSize != 0)
             {
                 throw new ArgumentException("msg length must divide by 16");
             }
@@ -63,7 +63,7 @@ namespace MyAES
                 byte[,] msgBlock = CreateMsgBlock(i, msg);
                 for (var j = 0; j < this.convertingNumber; j++)
                 {
-                    byte[,] keyBlock = CreateKeyBlock(240 - (j * 16));
+                    byte[,] keyBlock = CreateKeyBlock(this.key.Length - this.fragmentationSize - (j * this.fragmentationSize));
 
                     msgBlock = ShiftColumns(msgBlock);
                     msgBlock = ShiftRows(msgBlock);
