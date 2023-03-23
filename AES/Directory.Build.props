@@ -1,0 +1,10 @@
+<Project> 
+ <ItemGroup>
+   <PackageReference
+     Include="StyleCop.Analyzers"
+     Version="1.0.2"
+     PrivateAssets="all"
+     Condition="$(MSBuildProjectExtension) == '.csproj'"
+   />
+ </ItemGroup>
+</Project>
