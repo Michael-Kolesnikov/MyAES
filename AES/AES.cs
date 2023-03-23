@@ -4,17 +4,12 @@ namespace MyAES
 {
     public class AES
     {
-        private FiniteField field = new FiniteField(2, 8, new int[] { 1, 0, 0, 0, 1, 1, 1, 0, 1 }); //x^8+x^4+x^3+x^2+1
-        private byte[] _key;
-        private int _convertingNumber = 16;
+        private readonly FiniteField field = new(2, 8, new int[] { 1, 0, 0, 0, 1, 1, 1, 0, 1 }); //x^8+x^4+x^3+x^2+1
+        private readonly byte[] _key;
+        private readonly int _convertingNumber = 16;
         // must be the square of some number
-        private int _fragmentationSize = 16;
+        private readonly int _fragmentationSize = 16;
         public AES(byte[] key)
-        {
-            CreateKey(key);
-        }
-
-        private void CreateKey(byte[] key)
         {
             if (key.Length != 256) throw new ArgumentException("key size does not match the given parameters");
             _key = key;
